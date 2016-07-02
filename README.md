@@ -1,2 +1,29 @@
-# 201_Assign2
+
+
+# 201_Assign3
 Guessing Game
+
+Branch to assignment 3
+
+Today we'll be extending/refining the guessing game and working from a GitHub branch.
+
+In your guessing-game directory, your HTML should be in a file called index.html, your JS in a file called game.js, and you should have a README.md file as well.
+
+User Stories (MVP)
+
+As a developer, I want to work on a new branch in my repo, so I do not effect the state of my Master branch
+As a developer, I want to update my README.md file, so my repo is well documented and my sources are cited
+As a developer, I want to validate that my user input is in the correct format, so I can accept uppercase/lowercase or shorthand answers
+As a developer, I want to add a fourth question that takes a numeric input, and indicates to the user whether the guess is 'too high' or 'too low'.
+As a developer, I want to notify the user at the end of the game how many questions they guessed correctly, so they can celebrate their awesomeness.
+
+Technical Requirements
+
+Work on a branch and push to GitHub
+Updated and cleanly documented README
+Implement a new form of control flow for the fourth question
+Implement counter to track right/wrong answers
+Logical Operators (and possibly string methods) used effectively
+User Stories (Stretch)
+
+As a developer, I want to add a fifth question to my game, which prompts the user to guess my number (hint: using a while loop) until they have guessed correctly
