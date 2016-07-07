@@ -1,54 +1,47 @@
 var correct = 0;
-var user = prompt("Please input your full name","")
-alert("Hello, "+user+". Let's play a quick game.")   
-  
-var guess = prompt("Did I grow up in Oregon?", "Yes");
-if ((guess.toLowerCase() == "y") || (guess.toLowerCase() == "yes")) {
-  alert("Incorrect. I grew up in California.");
-} else {
-  alert("Correct! I grew up in California.");
-  correct++;
-}
 
-var guess = prompt("Did I complete the PHP Development track at Treehouse?", "Yes");
-  console.log("Guess: "+guess);
-if ((guess.toLowerCase() == "y") || (guess.toLowerCase() == "yes")) {
-  console.log("Guess was correct.");
-  alert("Correct! I passed the PHP Development track at Treehouse.");
-  correct++;
-} else {
-  console.log("Guess was incorrect.");
-  alert("Incorrect. I passed the PHP Development track at Treehouse.");
-}
-
-var guess = prompt("Did I graduate from Napa High School?", "Yes");
-if ((guess.toLowerCase() == "y") || (guess.toLowerCase() == "yes")) {
-  alert("Incorrect. I graduated from Vintage High School.");
-} else {
-  alert("Correct! I graduated from Vintage High School.");
-  correct++;
-}
-
-console.log("Start number game.");
-
-numQuizDone = false;
-numAttempts = 0;
-while (numQuizDone == false) {
-  var numGuess = prompt("Guess my favorite number. It is between 1 and 10:","");
-  if (numGuess == 5) {
-    console.log("Guess was correct.");
-    alert("Yes! You guessed my favorite number (because I was born on Cinco de Mayo).");
-    numAttempts++;
-    numQuizDone = true;
+function Quiz(question, answer, elaborate) {
+  var guess = prompt(question, "Yes");
+//  var first = guess.charAt(0);
+  if ((guess.charAt(0).toLowerCase() === answer)) {
+    document.getElementById("QuizContent").innerHTML += "<br>Correct! "+elaborate+"<br>";
+    correct++;
   } else {
-    console.log("Guess was incorrect.");
-    numAttempts++;
-    if (numGuess < 5) {
-      alert("Too low; try again.")
-    } else {
-        alert("Too high; try again.")
-    }
-  }
+   document.getElementById("QuizContent").innerHTML += "<br>Incorrect! "+elaborate+"<br>";
+  } 
 }
 
-alert(user+", you answered "+correct+" out of 3 biographical questions correctly and required "+numAttempts+" attempt(s) to guess my favorite number.")
+function NumQuiz (){
+  numQuizDone = false;
+  numAttempts = 0;
+  while (numQuizDone == false) {
+    var numGuess = prompt("Guess my favorite number. It is between 1 and 10:","");
+    if (numGuess == 5) {
+      document.getElementById("QuizContent").innerHTML += "<br>Yes! You guessed my favorite number (because I was born on Cinco de Mayo).<br>";
+      numAttempts++;
+      numQuizDone = true;
+    } else {
+      numAttempts++;
+      if (numGuess < 5) {
+        document.getElementById("QuizContent").innerHTML += "<br>Too low; try again.<br>";
+      } else {
+        document.getElementById("QuizContent").innerHTML += "<br>Too high; try again.<br>";
+      }
+    }
+  }  
+}
+
+function playGame() {
+  document.getElementById("QuizStart").innerHTML = "Quiz Time!";
+  var user = prompt("Please input your name","");
+  document.getElementById("QuizContent").innerHTML = "\nHello, "+user+". Let's play a quick game.<br>";
+
+  Quiz("Did I grow up in Oregon?", "n", "I grew up in California.");
+  Quiz("Did I complete the PHP Development track at Treehouse?", "y", "I passed the PHP Development track at Treehouse.");
+  Quiz("Did I graduate from Napa High School?", "n", "I graduated from Vintage High School.");
+
+  NumQuiz(5);
+
+  document.getElementById("QuizContent").innerHTML += "<br>"+user+", you answered "+correct+" out of 3 biographical questions correctly and required "+numAttempts+" attempt(s) to guess my favorite number.";
+}
+
